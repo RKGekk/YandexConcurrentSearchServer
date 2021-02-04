@@ -8,6 +8,9 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <type_traits>
+
+#include "HashedString.h"
 
 using namespace std::string_literals;
 
@@ -20,8 +23,6 @@ private:
     };
 
 public:
-    static_assert(std::is_integral_v<Key>, "ConcurrentMap supports only integer keys"s);
-
     struct Access {
         std::lock_guard<std::mutex> guard;
         Value& ref_to_value;
@@ -54,6 +55,12 @@ private:
     std::vector<Bucket> buckets_;
 
     Bucket& GetBucket(const Key& key) {
-        return buckets_[static_cast<uint64_t>(key) % buckets_.size()];
+        if constexpr (std::is_integral_v<Key>) {
+            return buckets_[static_cast<uint64_t>(key) % buckets_.size()];
+        }
+        else {
+            uint64_t k = reinterpret_cast<uint64_t>(HashedString::hash_name(key));
+            return buckets_[k % buckets_.size()];
+        }
     }
 };

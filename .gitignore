@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.ipch
+*.db
+*.suo
+*.db-wal
+*.db-shm
+*.opendb
+/.vs/ProjectSettings.json
+/.vs
+*.tlog
+/Project211/x64/Debug
+/x64/Debug

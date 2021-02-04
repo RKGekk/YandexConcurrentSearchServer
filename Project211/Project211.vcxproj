@@ -117,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="concurrent_map.h" />
     <ClInclude Include="document.h" />
+    <ClInclude Include="HashedString.h" />
     <ClInclude Include="log_duration.h" />
     <ClInclude Include="paginator.h" />
     <ClInclude Include="process_queries.h" />
@@ -153,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="document.cpp" />
+    <ClCompile Include="HashedString.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="process_queries.cpp" />
     <ClCompile Include="read_input_functions.cpp" />
